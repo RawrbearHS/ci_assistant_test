@@ -1,4 +1,3 @@
-# when an issue is created...
 on:
   issues:
     types: [opened]
