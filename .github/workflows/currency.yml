@@ -19,7 +19,12 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: ${{ github.event.issue.body }}
 
-      # apply a "command" tag
+      # apply a "command" label
+      - name: Label issues
+        uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90
+        with:
+          add-labels: "command"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # then parse the body with a custom action...
 
