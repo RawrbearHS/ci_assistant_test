@@ -14,13 +14,15 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # This is assuming that you are triggering off the issue, otherwise you will need to know the issue number
           issue_id: ${{ github.event.issue.number }}
+        # env:
+
 
       # Post issue body, for debug purposes
-      - name: Post Body Contents
-        uses: EddieHubCommunity/gh-action-community/src/welcome@main
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: ${{ issue_body_parser.payload }}
+      # - name: Post Body Contents
+      #   uses: EddieHubCommunity/gh-action-community/src/welcome@main
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     issue-message: ${{ issue_body_parser.payload }}
 
       # apply a "command" tag
 
