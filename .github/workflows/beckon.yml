@@ -9,11 +9,13 @@ on:
 
 jobs:
   beckon:
-    - name: Pull Repo
-      uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Repo
+        uses: actions/checkout@v3
 
-    - name: Beckon for More
-      uses: peter-evans/create-issue-from-file@v4
-      with:
-        title: 'I BECKON FOR MORE'
-        content-filepath: "./beckon.md"
+      - name: Beckon for More
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: 'I BECKON FOR MORE'
+          content-filepath: "./beckon.md"
