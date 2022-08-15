@@ -1,0 +1,11 @@
+on: issues
+  type: [opened]
+
+jobs:
+  consumeissue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: EddieHubCommunity/gh-action-community/src/welcome@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: '<h1>Beep Boop</h1> I am a robot. Thank you for your <strong>Issue</strong> <br /> I will now Ｃｏｎｓｕｍｅ'
