@@ -1,5 +1,6 @@
-on: issues
-  type: [opened]
+on:
+  issues:
+    types: [opened]
 
 jobs:
   consumeissue:
