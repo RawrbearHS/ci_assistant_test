@@ -17,8 +17,7 @@ jobs:
         id: find-phrases
         # Run a regex that finds "pay" and "deposit" in the issue body, then save it for later
         run: |
-#         echo "::set-output name=PHRASES_FOUND::$(\[\[ ${{ github.event.issue.body }} =~ (?:^|\W)(pay)|(deposit)(?:$|\W) \]\])"
-          echo "::set-output name=PHRASES_FOUND::$(\[\[ ${{ github.event.issue.body }} =~ pay \]\])"
+          echo "::set-output name=PHRASES_FOUND::$(\[\[ ${{ github.event.issue.body }} =~ (?:^|\W)(pay)|(deposit)(?:$|\W) \]\])"
 
       # Post issue body, for debug purposes
       - name: Post Body Contents
