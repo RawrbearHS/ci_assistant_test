@@ -7,17 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # read the contents of the issue...
-      - name: Get Issue Title and Body
+      # - name: Get Issue Title and Body
+      #   run: |
+      #     echo ${{ github.event.issue.title }}
+      #     echo ${{ github.event.issue.body }}
+
+      # do some parsing. is this even a command? if it is then continue
+      - name: Find Phrases
+        id: find-phrases
+        # Run a regex that finds "pay" and "deposit" in the issue body, then save it for later
         run: |
-          echo ${{ github.event.issue.title }}
-          echo ${{ github.event.issue.body }}
+          echo "::set-output name=PHRASES_FOUND::$(\[\[ ${{ github.event.issue.body }} =~ (?:^|\W)(pay)|(deposit)(?:$|\W) \]\])"
 
       # Post issue body, for debug purposes
       - name: Post Body Contents
+        # NOTE: from main, so may change in the future for the better hopefully
         uses: EddieHubCommunity/gh-action-community/src/welcome@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: ${{ github.event.issue.body }}
+          issue-message: ${{ steps.find-phrases.outputs.PHRASES_FOUND }}
+          # issue-message: ${{ github.event.issue.body }}
 
       # apply a "command" label
       - name: Label issues
